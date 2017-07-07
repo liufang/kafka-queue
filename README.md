@@ -34,8 +34,13 @@ Simply add a dependency on nmred/kafka-php to your project's composer.json file 
 ```
 {
 	"require": {
-		"nmred/kafka-php": "0.2.*"
+		"liufang/kafka-queue": "*"
 	}
+
+	"repositories": [
+    　　"type": "vcs",
+        "url": "git@github.com:liufang/kafka-queue.git"
+    ],
 }
 ```
 
@@ -63,15 +68,7 @@ $config->setBrokerVersion('0.9.0.1');
 $config->setRequiredAck(1);
 $config->setIsAsyn(false);
 $config->setProduceInterval(500);
-$producer = new \Kafka\Producer(function() {
-	return array(
-		array(
-			'topic' => 'test',
-			'value' => 'test....message.',
-			'key' => 'testkey',
-			),
-	);
-});
+$producer = new \Kafka\Producer();
 $producer->setLogger($logger);
 $producer->success(function($result) {
 	var_dump($result);
@@ -79,7 +76,13 @@ $producer->success(function($result) {
 $producer->error(function($errorCode, $context) {
 		var_dump($errorCode);
 });
-$producer->send();
+$producer->send(return array(
+                		array(
+                			'topic' => 'test',
+                			'value' => 'test....message.',
+                			'key' => 'testkey',
+                			),
+                	));
 ```
 
 ## Consumer
@@ -112,9 +115,3 @@ $consumer->start(function($topic, $part, $message) {
 ## Low-Level API
 
 Refer [Example](https://github.com/weiboad/kafka-php/tree/master/example)
-
-
-## QQ Group
-
-531522091
-![QQ Group](docs/qq_group.png)
