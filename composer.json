@@ -1,0 +1,25 @@
+{
+    "name": "liufang/kafka-queue",
+    "homepage": "https://github.com/liufang/kafka-queue",
+    "description": "基于kafka实现的消息队列",
+    "keywords": [
+        "kafka",
+        "queue"
+    ],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "nmred",
+            "email": "nmred_2008@126.com",
+            "role": "Creator / Lead Developer"
+        },
+        {
+            "name": "fang",
+            "email": "i@liufang.org.cn",
+            "role": "Creator / Lead Developer"
+        }
+    ],
+    "require": {
+        "php": ">=5.5"
+    }
+}
